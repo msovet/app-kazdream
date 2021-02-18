@@ -6,7 +6,7 @@ plugins {
 
 group = 'kz.msovet'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
@@ -14,8 +14,18 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.postgresql:postgresql'
+	implementation 'org.projectlombok:lombok'
+	implementation 'javax.xml.bind:jaxb-api'
+//	implementation 'com.sun.xml.bind:jaxb-iml'
+//	implementation 'com.sun.xml.bind:jaxb-core'
+	testImplementation ('org.springframework.boot:spring-boot-starter-test')
+//			{
+//		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//	}
 }
 
 test {
