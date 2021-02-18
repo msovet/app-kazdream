@@ -1,21 +1,26 @@
 package kz.msovet.appkazdream.controller;
 
+import kz.msovet.appkazdream.model.Category;
+import kz.msovet.appkazdream.model.Comment;
 import kz.msovet.appkazdream.model.News;
+import kz.msovet.appkazdream.repo.CommentRepo;
 import kz.msovet.appkazdream.repo.NewsRepo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("news")
 public class NewsController {
-    private final NewsRepo newsRepo;
+    @Autowired
+    private NewsRepo newsRepo;
 
-    public NewsController(NewsRepo newsRepo) {
-        this.newsRepo = newsRepo;
-    }
+    @Autowired
+    private CommentRepo commentRepo;
 
     @GetMapping
 //    @JsonView(Views.IdName.class)
@@ -48,5 +53,22 @@ public class NewsController {
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") News news) {
         newsRepo.delete(news);
+    }
+
+    @GetMapping("{id}/comments")
+    public List<Comment> comments(@PathVariable("id") News news) {
+        return news.getComments();
+    }
+
+    @PostMapping("{id}/comments")
+    public void comments(@PathVariable("id") News news,
+                                @RequestBody Comment comment) {
+        comment.setNews(news);
+        commentRepo.save(comment);
+    }
+
+    @GetMapping("category/{id}")
+    public Set<News> newsByCategory(@PathVariable("id") Category category) {
+        return category.getNews();
     }
 }
