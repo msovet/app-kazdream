@@ -1,9 +1,12 @@
 package kz.msovet.appkazdream.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -61,4 +64,21 @@ public class News {
     private LocalDateTime creationDate;
 
     private String category;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "news",
+            cascade = CascadeType.MERGE,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    private List<Comment> comments = new ArrayList<>();
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        comment.setNews(this);
+    }
+
+    public void removeDevice(Comment comment) {
+        comments.remove(comment);
+        comment.setNews(null);
+    }
 }
