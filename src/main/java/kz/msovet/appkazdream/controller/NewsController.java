@@ -1,10 +1,12 @@
 package kz.msovet.appkazdream.controller;
 
+import kz.msovet.appkazdream.dto.CommentPOJO;
 import kz.msovet.appkazdream.model.Category;
 import kz.msovet.appkazdream.model.Comment;
 import kz.msovet.appkazdream.model.News;
 import kz.msovet.appkazdream.repo.CommentRepo;
 import kz.msovet.appkazdream.repo.NewsRepo;
+import kz.msovet.appkazdream.service.impl.CommentServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,9 @@ public class NewsController {
 
     @Autowired
     private CommentRepo commentRepo;
+
+    @Autowired
+    private CommentServiceImpl commentServiceImpl;
 
     @GetMapping
 //    @JsonView(Views.IdName.class)
@@ -61,10 +66,8 @@ public class NewsController {
     }
 
     @PostMapping("{id}/comments")
-    public void comments(@PathVariable("id") News news,
-                                @RequestBody Comment comment) {
-        comment.setNews(news);
-        commentRepo.save(comment);
+    public void comments(@RequestBody CommentPOJO commentPOJO) {
+        commentServiceImpl.create(commentPOJO);
     }
 
     @GetMapping("category/{id}")

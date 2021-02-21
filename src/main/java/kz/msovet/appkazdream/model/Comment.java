@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Entity
 public class Comment {
@@ -24,7 +25,7 @@ public class Comment {
     @JoinColumn(name = "NEWS_ID",
             foreignKey = @ForeignKey(name = "NEWS_COMMENT_FK"),
             nullable = false)
-//    @JsonManagedReference
+    @JsonManagedReference
     private News news;
 
     public News getNews() {
