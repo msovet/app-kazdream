@@ -87,6 +87,7 @@ public class News {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
+
     public void addComment(Comment comment) {
         comments.add(comment);
         comment.setNews(this);

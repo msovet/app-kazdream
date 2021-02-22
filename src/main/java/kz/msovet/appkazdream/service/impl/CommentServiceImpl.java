@@ -1,8 +1,8 @@
 package kz.msovet.appkazdream.service.impl;
 
-import kz.msovet.appkazdream.pojo.CommentPOJO;
 import kz.msovet.appkazdream.model.Comment;
 import kz.msovet.appkazdream.model.News;
+import kz.msovet.appkazdream.pojo.CommentPOJO;
 import kz.msovet.appkazdream.repo.NewsRepo;
 import kz.msovet.appkazdream.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,7 @@ import java.util.Optional;
 public class CommentServiceImpl implements CommentService {
     @Autowired
     private NewsRepo newsRepo;
+
     @Override
     public void create(CommentPOJO commentPOJO) {
         Optional<News> news = newsRepo.findById(commentPOJO.getNewsId());

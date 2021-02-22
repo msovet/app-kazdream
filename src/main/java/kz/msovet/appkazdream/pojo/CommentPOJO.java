@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 /**
  * @author merey
- *
+ * <p>
  * POJO for {@link Comment}
  */
 
