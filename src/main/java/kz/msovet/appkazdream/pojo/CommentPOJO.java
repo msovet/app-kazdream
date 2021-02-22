@@ -1,4 +1,4 @@
-package kz.msovet.appkazdream.dto;
+package kz.msovet.appkazdream.pojo;
 
 import kz.msovet.appkazdream.model.Comment;
 import lombok.AllArgsConstructor;

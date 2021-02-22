@@ -1,11 +1,12 @@
 package kz.msovet.appkazdream.service;
 
 
-import kz.msovet.appkazdream.dto.CommentPOJO;
+import kz.msovet.appkazdream.model.Comment;
+import kz.msovet.appkazdream.pojo.CommentPOJO;
 import org.springframework.stereotype.Service;
 
 /**
- * Service for {@link kz.msovet.appkazdream.model.Comment}
+ * Service for {@link Comment}
  */
 
 @Service

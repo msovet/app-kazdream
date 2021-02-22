@@ -1,6 +1,6 @@
 package kz.msovet.appkazdream.service.impl;
 
-import kz.msovet.appkazdream.dto.CommentPOJO;
+import kz.msovet.appkazdream.pojo.CommentPOJO;
 import kz.msovet.appkazdream.model.Comment;
 import kz.msovet.appkazdream.model.News;
 import kz.msovet.appkazdream.repo.NewsRepo;

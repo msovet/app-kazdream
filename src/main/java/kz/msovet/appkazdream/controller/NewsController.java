@@ -1,10 +1,9 @@
 package kz.msovet.appkazdream.controller;
 
-import kz.msovet.appkazdream.dto.CommentPOJO;
 import kz.msovet.appkazdream.model.Category;
 import kz.msovet.appkazdream.model.Comment;
 import kz.msovet.appkazdream.model.News;
-import kz.msovet.appkazdream.repo.CommentRepo;
+import kz.msovet.appkazdream.pojo.CommentPOJO;
 import kz.msovet.appkazdream.repo.NewsRepo;
 import kz.msovet.appkazdream.service.impl.CommentServiceImpl;
 import org.springframework.beans.BeanUtils;
@@ -22,19 +21,14 @@ public class NewsController {
     private NewsRepo newsRepo;
 
     @Autowired
-    private CommentRepo commentRepo;
-
-    @Autowired
     private CommentServiceImpl commentServiceImpl;
 
     @GetMapping
-//    @JsonView(Views.IdName.class)
     public List<News> list() {
         return newsRepo.findAll();
     }
 
     @GetMapping("{id}")
-//    @JsonView(Views.FullMessage.class)
     public News getOne(@PathVariable("id") News news) {
         return news;
     }
